@@ -1,3 +1,11 @@
+
+CREATE TABLE departments (
+    dep_id INTEGER PRIMARY KEY,
+    dep_name VARCHAR(30) NOT NULL
+    
+);
+
+
 CREATE TABLE employees (
     id INTEGER PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
@@ -7,3 +15,5 @@ CREATE TABLE employees (
     salaries INTEGER NOT NULL,
     manager VARCHAR(30) NOT NULL
 );
+
+

@@ -1,3 +1,10 @@
+INSERT INTO departments (dep_name )
+VALUES
+    ('Security'),
+    ('Entertainment');
+
+
+
 INSERT INTO employees (first_name, last_name,job_titles,salaries, department,manager)
 VALUES
     ('John', 'Walker','Security Guard',40000, 'Security', 'S.Rogers'),
@@ -10,6 +17,8 @@ VALUES
     ('Felipe', 'Menendez','Security Guard',40000, 'Security', 'S.Rogers'),
     ('Jen', 'Lester','Drummer',42000, 'Entertainment', 'M.Jefferson'),
     ('Rick', 'Holt','Guitarist',42000, 'Entertainment', 'M.Jefferson');
+
+
 
 
 

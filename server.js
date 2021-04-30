@@ -36,6 +36,93 @@ db.on('open', () => {
     });
   });
 
+  
+
+  // Get all departments
+app.get('/api/departments', (req, res) => {
+  const sql = `SELECT * FROM departments`;
+  const params = [];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+
+
+// Get single departments
+app.get('/api/department/:dep_id', (req, res) => {
+  const sql = `SELECT * FROM departments 
+               WHERE dep_id = ?`;
+  const params = [req.params.dep_id];
+  db.get(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+
+    res.json({
+      message: 'success',
+      data: row
+    });
+  });
+});
+
+
+// Delete a department
+app.delete('/api/department/:dep_id', (req, res) => {
+  const sql = `DELETE FROM departments WHERE dep_id = ?`;
+  const params = [req.params.dep_id];
+  db.run(sql, params, function(err, result) {
+    if (err) {
+      res.status(400).json({ error: res.message });
+      return;
+    }
+
+    res.json({
+      message: 'successfully deleted',
+      changes: this.changes
+    });
+  });
+});
+
+
+// Create a department
+app.post('/api/department', ({ body }, res) => {
+  const errors = inputCheck(body, 'dep_name');
+  if (errors) {
+    res.status(400).json({ error: errors });
+    return;
+  }
+
+  const sql = `INSERT INTO departments (dep_name) 
+            VALUES (?)`;
+const params = [body.dep_name];
+// ES5 function, not arrow function, to use `this`
+db.run(sql, params, function(err, result) {
+if (err) {
+  res.status(400).json({ error: err.message });
+  return;
+}
+
+res.json({
+  message: 'success',
+  data: body,
+  dep_id: this.lastID
+});
+});
+
+});
+
+
+//Departments end here
+
   // Get all employees
 app.get('/api/employees', (req, res) => {
     const sql = `SELECT * FROM employees`;
