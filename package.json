@@ -17,7 +17,6 @@
     "seed": "sqlite3 db/operations.db < db/seeds.sql",
     "db": "sqlite3 db/operations.db",
     "start": "node server.js"
-
   },
   "keywords": [],
   "author": "",
