@@ -17,3 +17,11 @@ CREATE TABLE employees (
 );
 
 
+
+CREATE TABLE roles (
+    id INTEGER PRIMARY KEY,
+    job_titles VARCHAR(50) NOT NULL,
+    role TEXT,
+    department VARCHAR(30) NOT NULL,
+    salaries INTEGER NOT NULL
+);
